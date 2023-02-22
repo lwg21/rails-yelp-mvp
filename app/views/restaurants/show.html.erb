@@ -17,7 +17,11 @@
         </li>
       <% end %>
   </ul>
-  <%= link_to "Add a new review", new_restaurant_review_path(@restaurant), class: "btn btn-primary mt-3" %>
+  <h2>Add a review to <%= @restaurant.name %></h2>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, as: :numeric %>
+    <%= f.submit %>
+  <% end %>
   <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-primary mt-3" %>
-
 </div>
